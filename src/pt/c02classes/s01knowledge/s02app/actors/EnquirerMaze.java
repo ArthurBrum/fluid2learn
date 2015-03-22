@@ -8,7 +8,7 @@ import pt.c02classes.s01knowledge.s01base.inter.IResponder;
 public class EnquirerMaze implements IEnquirer {
 
 	IResponder responder;
-	int posX; 
+	int posX;
 	int posY;
 
 	String[] dirs = {"oeste", "norte", "leste", "sul"} ;
@@ -46,6 +46,7 @@ public class EnquirerMaze implements IEnquirer {
 		if(responder.ask("aqui").equals("saida"))
 			return true;
 		
+		
 		// Se ainda nao chegou na saida, procura caminhos disponiveis
 		for(int i = 0; i < dirs.length; i++){
 			if(!voltaPasso.equals(dirs[i])){
@@ -69,6 +70,7 @@ public class EnquirerMaze implements IEnquirer {
 					resolveu = solveMaze(dirs[i]);
 				
 				}
+				
 				// A partir do momento que resolver em uma das direcoes, para de procurar outras
 				if(resolveu)
 					break;
@@ -78,6 +80,8 @@ public class EnquirerMaze implements IEnquirer {
 		// Se ja tiver resolvido, apenas termina retornando true, se nao, volta para tentar outro caminho
 		if(resolveu)
 			return true;
+		
+		
 		else{
 			
 			// Solicita ao responder para voltar ao anterior e remove registro de que passou por ali
